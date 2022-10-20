@@ -1,14 +1,20 @@
 :root{
+  --size-width:900px;
   --icon-size: 40px;
+  --stnid-size: 60px;
 }
 
 html,
 body {
+  height:100%;
+  overflow:hidden;
   padding: 0;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
+
+#__next{width:100%;height:100%;overflow:hidden}
 
 a {
   color: inherit;
@@ -20,7 +26,7 @@ a {
 }
 
 /* MENU */
-nav{width:900px}
+nav{width:var(--size-width)}
 ul.gnb{margin:0;padding:0;display:flex;align-content:flex-start;flex-direction:row;flex-wrap:wrap;justify-content:space-around}
 ul.gnb li{list-style:none;flex-grow:1;}
 
@@ -76,7 +82,14 @@ a.selectMetro::before{content:"";background:url(/train.png);background-size:cove
 .fc.line_shinbundang{color:#D3013B}
 .fc.line_airport{color:#0390D1}
 
-@media (prefers-color-scheme: dark) {
+/* 역번호 표기 */
+.StnId{display:inline-block;border-radius:50%;width:var(--stnid-size);height:var(--stnid-size);line-height:var(--stnid-size);text-align:center;margin:0px 10px;font-size:100%;font-size:12pt}
+
+/* 역 목록 */
+main{width:var(--size-width);height:calc(100% - 148px);background:#f1f1f1;display:block;overflow:auto}
+div.row{width:100%;height:auto;border-bottom:1px solid #ddd;padding:15px 0px}
+
+/*@media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
   }
@@ -85,6 +98,6 @@ a.selectMetro::before{content:"";background:url(/train.png);background-size:cove
     background: black;
   }
   
-}
+}*/
 
 
