@@ -8,7 +8,8 @@ import Link from 'next/link'
 
 const Home: NextPage = () => {
   const { query } = useRouter();
-  const api_line = encodeURIComponent(query.lineName)
+  const line_name:any = query.lineName
+  const api_line = encodeURIComponent(line_name)
   const apikey:string|undefined = process.env.REACT_APP_APIKEY
   const apiurl:string = 'http://swopenapi.seoul.go.kr/api/subway/' + apikey + '/json/realtimePosition/0/100/' + api_line
 
