@@ -6,6 +6,7 @@
 
 html,
 body {
+  width:100%;
   height:100%;
   overflow:hidden;
   padding: 0;
@@ -14,7 +15,7 @@ body {
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
-#__next{width:100%;height:100%;overflow:hidden}
+#__next{width:100%;height:100%;overflow:auto}
 
 a {
   color: inherit;
@@ -26,7 +27,7 @@ a {
 }
 
 /* MENU */
-nav{width:var(--size-width)}
+nav{width:var(--size-width);width:100%}
 ul.gnb{margin:0;padding:0;display:flex;align-content:flex-start;flex-direction:row;flex-wrap:wrap;justify-content:space-around}
 ul.gnb li{list-style:none;flex-grow:1;}
 
@@ -82,12 +83,40 @@ a.selectMetro::before{content:"";background:url(/train.png);background-size:cove
 .fc.line_shinbundang{color:#D3013B}
 .fc.line_airport{color:#0390D1}
 
+/* 글자 색상 */
+.bd{background:transparent;font-weight:bold;border-width:3px}
+.bd.line_1{border-color:#0053A3}
+.bd.line_2{border-color:#009E3E}
+.bd.line_3{border-color:#EF7B1B}
+.bd.line_4{border-color:#00A5DE}
+.bd.line_5{border-color:#986CAC}
+.bd.line_6{border-color:#CD7D2F}
+.bd.line_7{border-color:#738000}
+.bd.line_8{border-color:#EA535D}
+.bd.line_9{border-color:#BDB091}
+.bd.line_suinbundang{border-color:#F5A201}
+.bd.line_gyeongjung{border-color:#77C4A3}
+.bd.line_gyeongchun{border-color:#0C8E71}
+.bd.line_seohae{border-color:#80A912}
+.bd.line_incheon1{border-color:#7BA8D5}
+.bd.line_incheon2{border-color:#ED8B00}
+.bd.line_yonginever{border-color:#4F9F21}
+.bd.line_gimpogold{border-color:#A17900}
+.bd.line_ui{border-color:#B0CE19}
+.bd.line_shinrim{border-color:#6789CA}
+.bd.line_shinbundang{border-color:#D3013B}
+.bd.line_airport{border-color:#0390D1}
+
 /* 역번호 표기 */
-.StnId{display:inline-block;border-radius:50%;width:var(--stnid-size);height:var(--stnid-size);line-height:var(--stnid-size);text-align:center;margin:0px 10px;font-size:100%;font-size:12pt}
+.StnId{display:block;border-radius:50%;width:var(--stnid-size);height:var(--stnid-size);line-height:var(--stnid-size);text-align:center;margin:0px auto;font-size:100%;font-size:12pt}
+.StnName{display:block;margin-top:5px}
 
 /* 역 목록 */
-main{width:var(--size-width);height:calc(100% - 148px);background:#f1f1f1;display:block;overflow:auto}
-div.row{width:100%;height:auto;border-bottom:1px solid #ddd;padding:15px 0px}
+main{width:100%;min-height:100%;background:#fcfcfc;display:block;display:flex;flex-direction:column}
+div.row{width:100%;height:auto;border-bottom:1px solid #ddd;text-align:center;display:flex;flex-direction:row;justify-content: center;}
+div.row .direction_down{}
+div.row .station_info{width:110px;padding:15px 0px}
+div.row .direction_down{}
 
 /*@media (prefers-color-scheme: dark) {
   html {

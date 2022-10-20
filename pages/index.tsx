@@ -3,6 +3,7 @@ import { useRouter } from 'next/router'
 import { useEffect } from 'react'
 
 import axios from 'axios'
+import Head from 'next/head'
 import Link from 'next/link'
 
 
@@ -41,7 +42,7 @@ const Home: NextPage = () => {
     ['K', '103', , '동두천중앙', ''],
     ['K', '104', , '지행', ''],
     ['K', '105', , '덕정', ''],
-    ['K', '', , '회정', '미개통'],
+    ['K', '000', , '회정', '미개통'],
     ['K', '106', , '덕계', ''],
     ['K', '107', , '양주', ''],
     ['K', '108', , '녹양', ''],
@@ -184,12 +185,12 @@ const Home: NextPage = () => {
     ['S', '241', , '이대', ''],
     ['S', '242', , '아현', ''],
     ['S', '243', , '충정로', ''],
-    ['S', '211-0', '성수지선', '성수', ''],
+    ['S', '211', '성수지선', '성수', ''],
     ['S', '211-1', '성수지선', '용답', ''],
     ['S', '211-2', '성수지선', '신답', ''],
     ['S', '211-3', '성수지선', '용두', ''],
     ['S', '211-4', '성수지선', '신설동', ''],
-    ['S', '234-0', '신정지선', '신도림', ''],
+    ['S', '234', '신정지선', '신도림', ''],
     ['S', '234-1', '신정지선', '도림천', ''],
     ['S', '234-2', '신정지선', '양천구청', ''],
     ['S', '234-3', '신정지선', '신정네거리', ''],
@@ -651,6 +652,9 @@ const Home: NextPage = () => {
 
   return (
     <>
+      <Head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+      </Head>
       <nav>
         <ul className='gnb'>
           {
@@ -676,14 +680,15 @@ const Home: NextPage = () => {
           eval(lineId) !== undefined && eval(lineId).map((e:any, key:number) => {
             if(e[4] !== '미개통') {
               return(
-              <div className='row' key={key}>
-                <div></div>
-                <div>
+              <div className='row' data-id={e[1]} key={key}>
+                <div className='direction_down'></div>
+                <div className='station_info'>
                   <div>
                     <span className={'StnId bg ' + lineId}>{e[1]}</span>
-                    <span>{e[3]}</span>
+                    <span className='StnName'>{e[3]}</span>
                   </div>
                 </div>
+                <div className='direction_up'></div>
               </div>)}
           })
         }
