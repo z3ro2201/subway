@@ -1,0 +1,90 @@
+:root{
+  --icon-size: 40px;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* MENU */
+nav{width:900px}
+ul.gnb{margin:0;padding:0;display:flex;align-content:flex-start;flex-direction:row;flex-wrap:wrap;justify-content:space-around}
+ul.gnb li{list-style:none;flex-grow:1;}
+
+/* subway icon */
+a.selectMetro{color:#FFFFFF;text-align:center;padding:5px 25px;display:block;user-select:none;-moz-user-select:none;-webkit-user-select:none;width:100%;}
+a.selectMetro::before{content:"";background:url(/train.png);background-size:cover;width:var(--icon-size);height:var(--icon-size);display:block;filter:invert(100%);margin:2px auto}
+
+/* 배경 색상 */
+.bg{color:#fff;font-weight:bold}
+.bg.line_1{background:#0053A3}
+.bg.line_2{background:#009E3E}
+.bg.line_3{background:#EF7B1B}
+.bg.line_4{background:#00A5DE}
+.bg.line_5{background:#986CAC}
+.bg.line_6{background:#CD7D2F}
+.bg.line_7{background:#738000}
+.bg.line_8{background:#EA535D}
+.bg.line_9{background:#BDB091}
+.bg.line_suinbundang{background:#F5A201}
+.bg.line_gyeongjung{background:#77C4A3}
+.bg.line_gyeongchun{background:#0C8E71}
+.bg.line_seohae{background:#80A912}
+.bg.line_incheon1{background:#7BA8D5}
+.bg.line_incheon2{background:#ED8B00}
+.bg.line_yonginever{background:#4F9F21}
+.bg.line_gimpogold{background:#A17900}
+.bg.line_ui{background:#B0CE19}
+.bg.line_shinrim{background:#6789CA}
+.bg.line_shinbundang{background:#D3013B}
+.bg.line_airport{background:#0390D1}
+
+/* 글자 색상 */
+.fc{background:transparent;font-weight:bold}
+.fc.line_1{color:#0053A3}
+.fc.line_2{color:#009E3E}
+.fc.line_3{color:#EF7B1B}
+.fc.line_4{color:#00A5DE}
+.fc.line_5{color:#986CAC}
+.fc.line_6{color:#CD7D2F}
+.fc.line_7{color:#738000}
+.fc.line_8{color:#EA535D}
+.fc.line_9{color:#BDB091}
+.fc.line_suinbundang{color:#F5A201}
+.fc.line_gyeongjung{color:#77C4A3}
+.fc.line_gyeongchun{color:#0C8E71}
+.fc.line_seohae{color:#80A912}
+.fc.line_incheon1{color:#7BA8D5}
+.fc.line_incheon2{color:#ED8B00}
+.fc.line_yonginever{color:#4F9F21}
+.fc.line_gimpogold{color:#A17900}
+.fc.line_ui{color:#B0CE19}
+.fc.line_shinrim{color:#6789CA}
+.fc.line_shinbundang{color:#D3013B}
+.fc.line_airport{color:#0390D1}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+  body {
+    color: white;
+    background: black;
+  }
+  
+}
+
+
