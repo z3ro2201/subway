@@ -11,7 +11,7 @@ const Home: NextPage = () => {
   const line_name:any = query.lineName
   const api_line = encodeURIComponent(line_name)
   const apikey:string|undefined = process.env.REACT_APP_APIKEY
-  const apiurl:string = 'https://subway.2ero.dev/api/subway' + api_line
+  const apiurl:string = 'https://subway.2ero.dev/api/subway?station=' + api_line
 
   const line:any = [
     ['1호선', 1], ['2호선', 2], ['3호선', 3], ['4호선', 4], ['5호선', 5], ['6호선', 6], ['7호선', 7], ['8호선', 8], ['9호선', 9],
