@@ -6,7 +6,6 @@ import axios from 'axios'
 import Head from 'next/head'
 import Link from 'next/link'
 
-
 const Home: NextPage = () => {
   const { query } = useRouter();
   const line_name:any = query.lineName
@@ -632,6 +631,7 @@ const Home: NextPage = () => {
   if(query.lineId !== undefined) lineId = 'line_' + query.lineId
 
   function getData(){
+
     axios.get(apiurl).then((res) => {
       const data = res.data;
       if(data.status === 500) { return console.log('error!') }
@@ -641,6 +641,7 @@ const Home: NextPage = () => {
         console.log('열차종점: ' + e['statnTnm'])
       })
     })
+
     //eval(lineId).map(x => console.log(x))
   }
 
@@ -654,7 +655,6 @@ const Home: NextPage = () => {
     <>
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"/>
       </Head>
       <nav>
         <ul className='gnb'>

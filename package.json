@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@types/axios": "^0.14.0",
+    "@types/request": "^2.48.8",
     "dotenv": "^16.0.3",
     "dotenv-webpack": "^8.0.1",
     "env-cmd": "^10.1.0",
