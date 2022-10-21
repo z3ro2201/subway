@@ -647,7 +647,8 @@ const Home: NextPage = () => {
 
   useEffect(() => {
     if(query.lineName !== undefined && query.lineId !== undefined) {
-      getData()
+      const interval = setInterval(() => getData(), 30000);
+      return() => clearInterval(interval)
     }
   })
 
