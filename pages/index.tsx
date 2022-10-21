@@ -11,8 +11,8 @@ const Home: NextPage = () => {
   const line_name:any = query.lineName
   const api_line = encodeURIComponent(line_name)
   const apikey:string|undefined = process.env.REACT_APP_APIKEY
-  const apiurl:string = 'https://subway.2ero.dev/api/subway?station=' + api_line
-  //const apiurl:string = 'http://swopenapi.seoul.go.kr/api/subway/' + apikey + '/json/realtimePosition/0/100/' + api_line
+  //const apiurl:string = 'https://subway.2ero.dev/api/subway?station=' + api_line
+  const apiurl:string = 'http://swopenapi.seoul.go.kr/api/subway/' + apikey + '/json/realtimePosition/0/100/' + api_line
 
   const line:any = [
     ['1호선', 1], ['2호선', 2], ['3호선', 3], ['4호선', 4], ['5호선', 5], ['6호선', 6], ['7호선', 7], ['8호선', 8], ['9호선', 9],
@@ -568,19 +568,19 @@ const Home: NextPage = () => {
   ]
 
   const line_ui:any = [
-    ['UI', 'S110', , '북한산우이', ''],
-    ['UI', 'S111', , '솔밭공원', ''],
-    ['UI', 'S112', , '419민주묘지', ''],
-    ['UI', 'S113', , '가오리', ''],
-    ['UI', 'S114', , '화계', ''],
-    ['UI', 'S115', , '삼양', ''],
-    ['UI', 'S116', , '삼양사거리', ''],
-    ['UI', 'S117', , '솔샘', ''],
-    ['UI', 'S118', , '북한산보국문', ''],
-    ['UI', 'S119', , '정릉', ''],
-    ['UI', 'S120', , '성신여대입구', ''],
-    ['UI', 'S121', , '보문', ''],
-    ['UI', 'S122', , '신설동', '']
+    ['UI', '701', , '북한산우이', ''],
+    ['UI', '702', , '솔밭공원', ''],
+    ['UI', '703', , '419민주묘지', ''],
+    ['UI', '704', , '가오리', ''],
+    ['UI', '705', , '화계', ''],
+    ['UI', '706', , '삼양', ''],
+    ['UI', '707', , '삼양사거리', ''],
+    ['UI', '708', , '솔샘', ''],
+    ['UI', '709', , '북한산보국문', ''],
+    ['UI', '710', , '정릉', ''],
+    ['UI', '711', , '성신여대입구', ''],
+    ['UI', '712', , '보문', ''],
+    ['UI', '713', , '신설동', '']
   ]
 
   const line_shinbundang:any = [
@@ -632,52 +632,72 @@ const Home: NextPage = () => {
   if(query.lineId !== undefined) lineId = 'line_' + query.lineId
 
   function getData(){
+    document.querySelector('#stnInfo')?.remove()
 
     axios.get(apiurl).then((res) => {
       const data = res.data;
       if(data.status === 500) { return console.log('error!') }
       data.realtimePositionList.map((e:any, key:number) => {
-        const getStnId = e['statnId'].substr(6)
+        let getStnId;
+        let line_id = lineId.split('_')[1];
+        
+        
+        switch(line_id)
+        {
+          case "shinbundang": 
+            getStnId = 'D' + e['statnId'].substr(8)
+            break
+          case "airport":
+            getStnId = 'A' + e['statnId'].substr(8)
+            break
+          default:
+            getStnId = e['statnId'].substr(6);
+        }
+
+        console.log(e['statnId'])
+
+
         let stnId:string;
         if(getStnId[0] == 0) stnId = getStnId.substr(1)
         else stnId = getStnId
-      
+        
+        console.log('열차방향: ' + e['updnLine'] + ' / 열차번호: ' + e['trainNo'])
+        
         const newDiv = document.createElement('div')
+        let newText;
+        newDiv.id = 'stnInfo'
         if(e['updnLine'] == 0) {
           if(e['trainSttus']) {
-            //`[data-id=${stnId}]`
+            newText = document.createTextNode(e['trainNo'] + '열차 ' + e['statnNm'] + ' 진입')
+            newDiv.appendChild(newText)
+            document.querySelector('.direction_up .up_approach.stnid_' + stnId)?.append(newDiv)
+          } else if(e['trainSttus'] === 1) {
             const newText = document.createTextNode(e['trainNo'] + '열차 ' + e['statnNm'] + ' 진입')
-            newDiv.append(newText)
-            document.querySelector('.up_approach.stnid_' + stnId)?.append(newDiv)
-          } else if(e['trainSttus'] === 1) {document.querySelector('.stn_' + stnId)?.append('test')
+            newDiv.appendChild(newText)
+            document.querySelector('.direction_up .up_arrival.stnid_' + stnId)?.append(newDiv)
+          } else {
             const newText = document.createTextNode(e['trainNo'] + '열차 ' + e['statnNm'] + ' 진입')
-            newDiv.append(newText)
-            document.querySelector('.up_approach.stnid_' + stnId)?.append(newDiv)
-          } else {document.querySelector('.stn_' + stnId)?.append('test')
-            const newText = document.createTextNode(e['trainNo'] + '열차 ' + e['statnNm'] + ' 진입')
-            newDiv.append(newText)
-            document.querySelector('.up_approach.stnid_' + stnId)?.append(newDiv)
+            newDiv.appendChild(newText)
+            document.querySelector('.direction_up .up_leave.stnid_' + stnId)?.append(newDiv)
           }
         } else {
           if(e['trainSttus'] === 0) {
             const newText = document.createTextNode(e['trainNo'] + '열차 ' + e['statnNm'] + ' 진입')
-            newDiv.append(newText)
-            document.querySelector('.down_approach.stnid_' + stnId)?.append(newDiv)
+            newDiv.appendChild(newText)
+            document.querySelector('.direction_down .down_approach.stnid_' + stnId)?.append(newDiv)
           }
           else if(e['trainSttus'] === 1) {
             const newText = document.createTextNode(e['trainNo'] + '열차 ' + e['statnNm'] + ' 도착')
-            newDiv.append(newText)
-            document.querySelector('.down_approach.stnid_' + stnId)?.append(newDiv)
+            newDiv.appendChild(newText)
+            document.querySelector('.direction_down .down_arrival.stnid_' + stnId)?.append(newDiv)
           } else {
             const newText = document.createTextNode(e['trainNo'] + '열차 ' + e['statnNm'] + ' 출발')
-            newDiv.append(newText)
-            document.querySelector('.down_approach.stnid_' + stnId)?.append(newDiv)
+            newDiv.appendChild(newText)
+            document.querySelector('.direction_down .down_leave.stnid_' + stnId)?.append(newDiv)
           }
         }
       })
     })
-
-    //eval(lineId).map(x => console.log(x))
   }
 
   useEffect(() => {
@@ -685,7 +705,9 @@ const Home: NextPage = () => {
       // 최초 1회는 불러오고 이후로는 30초 단위로 갱신
       getData()
 
-      const interval = setInterval(() => getData(), 30000);
+      const interval = setInterval(() => { 
+        getData()
+       }, 10000);
       return() => clearInterval(interval)
     }
   })
@@ -722,9 +744,9 @@ const Home: NextPage = () => {
               return(
               <div className='row' key={key}>
                 <div className='direction_down'>
-                  <div className='down_leave'></div>
-                  <div className='down_arrival'></div>
-                  <div className='down_approach'></div>
+                  <div className={ 'down_approach stnid_' + e[1] }></div>
+                  <div className={ 'down_arrival stnid_' + e[1] }></div>
+                  <div className={ 'down_leave stnid_' +  e[1]} ></div>
                 </div>
                 <div className='station_info'>
                   <div>
@@ -733,9 +755,9 @@ const Home: NextPage = () => {
                   </div>
                 </div>
                 <div className='direction_up'>
-                  <div className={'up_leave stnid_' + e[1]}></div>
-                  <div className={'up_arrival stnid_' + e[1]}></div>
                   <div className={'up_approach stnid_' + e[1]}></div>
+                  <div className={'up_arrival stnid_' + e[1]}></div>
+                  <div className={'up_leave stnid_' + e[1]}></div>
                 </div>
               </div>)}
           })

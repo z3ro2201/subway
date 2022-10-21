@@ -115,14 +115,14 @@ a.selectMetro::before{content:"";background:url(/train.png);background-size:cove
 main{width:100%;min-height:100%;background:#fcfcfc;display:block;display:flex;flex-direction:column}
 div.row{width:100%;height:auto;border-bottom:1px solid #ddd;text-align:center;display:flex;flex-direction:row;justify-content: center;}
 div.row .direction_down{width:calc(50% - 110px)}
-div.row .direction_down .down_leave, 
+div.row .direction_down .down_approach, 
 div.row .direction_down .down_arrival,
-div.row .direction_down .down_approach {width:100%;display:block}
+div.row .direction_down .down_leave {width:100%;height:calc(100% / 3);display:block}
 div.row .station_info{width:110px;padding:15px 0px}
 div.row .direction_up{width:calc(50% - 110px)}
 div.row .direction_up .up_leave, 
 div.row .direction_up .up_arrival,
-div.row .direction_up .up_approach {width:100%;height:calc(100% / 3)}
+div.row .direction_up .up_approach {width:100%;height:calc(100% / 3);display:block}
 
 /*@media (prefers-color-scheme: dark) {
   html {
