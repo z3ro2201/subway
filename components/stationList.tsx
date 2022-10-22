@@ -1,6 +1,8 @@
 import type { NextPage } from 'next'
 import React from 'react'
 
+import {transferInfo} from './transferInfo'
+
 type AppLayoutProps = {
     list:any
 }
@@ -22,13 +24,30 @@ export default function StationList({ list }: AppLayoutProps) {
                             <div>
                                 <span className={ 'StnId bg line_' + item.lineId}>{item.stationId}</span>
                                 <span className='StnName'>{item.stationName}</span>
-                                <span className='transferLine'>
+                                <ul className='transferLine'>
                                     {
-                                        item.transferLine.split(',') && item.transferLine.split(',').map((line:any, key:number) => {
-                                            <div>aa</div>
+                                        item.transferLine && item.transferLine.split(',').map((line:any, key:number) => {
+                                            //console.log()
+                                            const shortName = transferInfo.map((ele:any, key:number) => {
+                                                if(ele.lineCode === line) return ele.lineShortName
+                                            })
+                                            switch(line)
+                                            {
+                                                case "SS": line = 2; break;
+                                                case "SJ": line = 2; break;
+                                                case "MC": line = 5; break;
+                                                case "A": line = 'airport';break;
+                                                case "UI": line = 'ui';break;
+                                                case "sr": line = 'shinrim';break;
+                                                case "i1": line = 'incheon1';break;
+                                                case 'i2': line = 'incheon2';break;
+                                                case 'GG': line = 'gimpogold';break;
+                                                default:;
+                                            }
+                                            return(<li className={'transferIcon bg line_' + line } key={key}>{shortName}</li>)
                                         })
                                     }
-                                </span>
+                                </ul>
                             </div>
                         </div>
                         <div className='direction_up'>

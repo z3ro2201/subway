@@ -1,6 +1,6 @@
 export const getStation =  [
     /* 운영회사, 역번호, 연계역, 지선/본선여부, 역명, 개통여부 */
-    { 'companyCode': 'K', 'lineId': 'gyeongchun', 'manageCode': 'K117', 'stationId': 'K117', 'transferLine': '', 'lineType': '', 'stationName': '청량리', 'status': 1},
+    { 'companyCode': 'K', 'lineId': 'gyeongchun', 'manageCode': 'K117', 'stationId': 'K117', 'transferLine': 'gyeongjung,gyeongchun,suinbundang', 'lineType': '', 'stationName': '청량리', 'status': 1},
     { 'companyCode': 'K', 'lineId': 'gyeongchun', 'manageCode': 'K118', 'stationId': 'K118', 'transferLine': '', 'lineType': '', 'stationName': '회기', 'status': 1},
     { 'companyCode': 'K', 'lineId': 'gyeongchun', 'manageCode': 'K119', 'stationId': 'K119', 'transferLine': '', 'lineType': '', 'stationName': '중랑', 'status': 1},
     { 'companyCode': 'K', 'lineId': 'gyeongchun', 'manageCode': 'K120', 'stationId': 'K120', 'transferLine': '', 'lineType': '', 'stationName': '상봉', 'status': 1},

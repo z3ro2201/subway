@@ -58,6 +58,7 @@ a.selectMetro::before{content:"";background:url(/train.png);background-size:cove
 .bg.line_shinrim{background:#6789CA}
 .bg.line_shinbundang{background:#D3013B}
 .bg.line_airport{background:#0390D1}
+.bg.line_ul{background: #FDA600}
 
 /* 글자 색상 */
 .fc{background:transparent;font-weight:bold}
@@ -82,6 +83,7 @@ a.selectMetro::before{content:"";background:url(/train.png);background-size:cove
 .fc.line_shinrim{color:#6789CA}
 .fc.line_shinbundang{color:#D3013B}
 .fc.line_airport{color:#0390D1}
+.fc.line_ul{color: #FDA600}
 
 /* 글자 색상 */
 .bd{background:transparent;font-weight:bold;border-width:3px}
@@ -106,10 +108,7 @@ a.selectMetro::before{content:"";background:url(/train.png);background-size:cove
 .bd.line_shinrim{border-color:#6789CA}
 .bd.line_shinbundang{border-color:#D3013B}
 .bd.line_airport{border-color:#0390D1}
-
-/* 역번호 표기 */
-.StnId{display:block;border-radius:50%;width:var(--stnid-size);height:var(--stnid-size);line-height:var(--stnid-size);text-align:center;margin:0px auto;font-size:100%;font-size:12pt}
-.StnName{display:block;margin-top:5px}
+.bd.line_ul{border-color: #ec9f19;}
 
 /* 역 목록 */
 main{width:100%;min-height:100%;background:#fcfcfc;display:block;display:flex;flex-direction:column}
@@ -119,11 +118,18 @@ div.row .direction_down .down_approach,
 div.row .direction_down .down_arrival,
 div.row .direction_down .down_leave {width:100%;height:calc(100% / 3);display:block}
 div.row .station_info{width:110px;padding:15px 0px}
+div.row .station_info span{display:block}
 div.row .direction_up{width:calc(50% - 110px)}
 div.row .direction_up .up_leave, 
 div.row .direction_up .up_arrival,
 div.row .direction_up .up_approach {width:100%;height:calc(100% / 3);display:block}
 
+/* 역번호 표기 */
+.StnId{display:block;border-radius:50%;width:var(--stnid-size);height:var(--stnid-size);line-height:var(--stnid-size);text-align:center;margin:0px auto;font-size:100%;font-size:12pt}
+.StnName{display:block;margin-top:5px}
+ul.transferLine{margin:0;padding:0;display:block;}
+ul.transferLine li{display:block}
+ul.transferLine li.transferIcon{display:inline-block;margin:2px;width:25px;height:25px;font-size:8px;overflow-wrap:hidden;line-height:12px;border-radius:50%;border-width:2px;border-style:solid;padding:4px 4px}
 /*@media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
