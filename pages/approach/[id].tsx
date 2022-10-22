@@ -27,7 +27,7 @@ const Approach = () =>
     let lineData:any
     const [lineList, setLineList] = useState([])
 
-    if(id >= 1 && id <= 9)
+    if(id !== undefined && id >= 1 && id <= 9)
     {
         lineId = id
         lineNumber = id + '호선'
