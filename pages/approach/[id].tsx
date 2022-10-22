@@ -66,7 +66,7 @@ const Approach = () =>
                 <title>SSing Metro :: {lineNumber}</title>
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
             </Head>
-            <StationList lineId={lineId} list={lineList}/>
+            <StationList list={lineList}/>
         </>
     )
 }
