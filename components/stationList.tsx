@@ -1,7 +1,11 @@
 import type { NextPage } from 'next'
+import React from 'react'
 
-export default function StationList({ list }) {
+type AppLayoutProps = {
+    list:any
+}
 
+export default function StationList({ list }: AppLayoutProps) {
     return(
         <>
         {
