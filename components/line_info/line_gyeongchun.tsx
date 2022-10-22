@@ -1,31 +1,28 @@
-const Gyeongchun = () => {
-    const stationList:any = [
-        /* 운영회사, 역번호, 연계역, 지선/본선여부, 역명, 개통여부 */
-        ['K' ,'K117', [1,'GyeongJung','SuinBundang'], , '청량리', ''],
-        ['K' ,'K118', [1, 'GyeongJung'], , '회기', ''],
-        ['K' ,'K119', ['GyeongJung'], , '중랑', ''],
-        ['K' ,'K120', [7,'GyeongJung'], , '상봉', ''],
-        ['K' ,'K121', ['GyeongJung'], , '망우', ''],
-        ['K' ,'K122', [6], , '신내', ''],
-        ['K' ,'K123', [], , '갈매', ''],
-        ['K' ,'K124', [], , '별내', ''],
-        ['K' ,'K125', [], , '퇴계원', ''],
-        ['K' ,'K000', [], , '왕숙', '미개통'],
-        ['K' ,'K126', [], , '사릉', ''],
-        ['K' ,'K127', [], , '금곡', ''],
-        ['K' ,'K128', [], , '평내호평', ''],
-        ['K' ,'K129', [], , '천마산', ''],
-        ['K' ,'K130', [], , '마석', ''],
-        ['K' ,'K131', [], , '대성리', ''],
-        ['K' ,'K132', [], , '청평', ''],
-        ['K' ,'K133', [], , '상천', ''],
-        ['K' ,'K134', [], , '가평', ''],
-        ['K' ,'K135', [], , '굴봉산', ''],
-        ['K' ,'K136', [], , '백양리', ''],
-        ['K' ,'K137', [], , '강촌', ''],
-        ['K' ,'K138', [], , '김유정' ,''],
-        ['K' ,'K139', [], , '남춘천', ''],
-        ['K' ,'K140', [], , '춘천', '']
-    ]
-}
-export default Gyeongchun
+export const getStation =  [
+    /* 운영회사, 역번호, 연계역, 지선/본선여부, 역명, 개통여부 */
+    { 'companyCode': 'K', 'lineId': 'gyeongchun', 'manageCode': 'K117', 'stationId': 'K117', 'transferLine': '', 'lineType': '', 'stationName': '청량리', 'status': 1},
+    { 'companyCode': 'K', 'lineId': 'gyeongchun', 'manageCode': 'K118', 'stationId': 'K118', 'transferLine': '', 'lineType': '', 'stationName': '회기', 'status': 1},
+    { 'companyCode': 'K', 'lineId': 'gyeongchun', 'manageCode': 'K119', 'stationId': 'K119', 'transferLine': '', 'lineType': '', 'stationName': '중랑', 'status': 1},
+    { 'companyCode': 'K', 'lineId': 'gyeongchun', 'manageCode': 'K120', 'stationId': 'K120', 'transferLine': '', 'lineType': '', 'stationName': '상봉', 'status': 1},
+    { 'companyCode': 'K', 'lineId': 'gyeongchun', 'manageCode': 'K121', 'stationId': 'K121', 'transferLine': '', 'lineType': '', 'stationName': '망우', 'status': 1},
+    { 'companyCode': 'K', 'lineId': 'gyeongchun', 'manageCode': 'K122', 'stationId': 'K122', 'transferLine': '', 'lineType': '', 'stationName': '신내', 'status': 1},
+    { 'companyCode': 'K', 'lineId': 'gyeongchun', 'manageCode': 'K123', 'stationId': 'K123', 'transferLine': '', 'lineType': '', 'stationName': '갈매', 'status': 1},
+    { 'companyCode': 'K', 'lineId': 'gyeongchun', 'manageCode': 'K124', 'stationId': 'K124', 'transferLine': '', 'lineType': '', 'stationName': '별내', 'status': 1},
+    { 'companyCode': 'K', 'lineId': 'gyeongchun', 'manageCode': 'K125', 'stationId': 'K125', 'transferLine': '', 'lineType': '', 'stationName': '퇴계원', 'status': 1},
+    { 'companyCode': 'K', 'lineId': 'gyeongchun', 'manageCode': 'K000', 'stationId': 'K000', 'transferLine': '', 'lineType': '', 'stationName': '왕숙', 'status': 0},
+    { 'companyCode': 'K', 'lineId': 'gyeongchun', 'manageCode': 'K126', 'stationId': 'K126', 'transferLine': '', 'lineType': '', 'stationName': '사릉', 'status': 1},
+    { 'companyCode': 'K', 'lineId': 'gyeongchun', 'manageCode': 'K127', 'stationId': 'K127', 'transferLine': '', 'lineType': '', 'stationName': '금곡', 'status': 1},
+    { 'companyCode': 'K', 'lineId': 'gyeongchun', 'manageCode': 'K128', 'stationId': 'K128', 'transferLine': '', 'lineType': '', 'stationName': '평내호평', 'status': 1},
+    { 'companyCode': 'K', 'lineId': 'gyeongchun', 'manageCode': 'K129', 'stationId': 'K129', 'transferLine': '', 'lineType': '', 'stationName': '천마산', 'status': 1},
+    { 'companyCode': 'K', 'lineId': 'gyeongchun', 'manageCode': 'K130', 'stationId': 'K130', 'transferLine': '', 'lineType': '', 'stationName': '마석', 'status': 1},
+    { 'companyCode': 'K', 'lineId': 'gyeongchun', 'manageCode': 'K131', 'stationId': 'K131', 'transferLine': '', 'lineType': '', 'stationName': '대성리', 'status': 1},
+    { 'companyCode': 'K', 'lineId': 'gyeongchun', 'manageCode': 'K132', 'stationId': 'K132', 'transferLine': '', 'lineType': '', 'stationName': '청평', 'status': 1},
+    { 'companyCode': 'K', 'lineId': 'gyeongchun', 'manageCode': 'K133', 'stationId': 'K133', 'transferLine': '', 'lineType': '', 'stationName': '상천', 'status': 1},
+    { 'companyCode': 'K', 'lineId': 'gyeongchun', 'manageCode': 'K134', 'stationId': 'K134', 'transferLine': '', 'lineType': '', 'stationName': '가평', 'status': 1},
+    { 'companyCode': 'K', 'lineId': 'gyeongchun', 'manageCode': 'K135', 'stationId': 'K135', 'transferLine': '', 'lineType': '', 'stationName': '굴봉산', 'status': 1},
+    { 'companyCode': 'K', 'lineId': 'gyeongchun', 'manageCode': 'K136', 'stationId': 'K136', 'transferLine': '', 'lineType': '', 'stationName': '백양리', 'status': 1},
+    { 'companyCode': 'K', 'lineId': 'gyeongchun', 'manageCode': 'K137', 'stationId': 'K137', 'transferLine': '', 'lineType': '', 'stationName': '강촌', 'status': 1},
+    { 'companyCode': 'K', 'lineId': 'gyeongchun', 'manageCode': 'K138', 'stationId': 'K138', 'transferLine': '', 'lineType': '', 'stationName': '김유정' ,'status': 1},
+    { 'companyCode': 'K', 'lineId': 'gyeongchun', 'manageCode': 'K139', 'stationId': 'K139', 'transferLine': '', 'lineType': '', 'stationName': '남춘천', 'status': 1},
+    { 'companyCode': 'K', 'lineId': 'gyeongchun', 'manageCode': 'K140', 'stationId': 'K140', 'transferLine': '', 'lineType': '', 'stationName': '춘천', 'status': 1}
+]

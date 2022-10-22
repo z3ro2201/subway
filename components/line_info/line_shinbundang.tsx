@@ -1,30 +1,26 @@
-const ShinBundang = () => {
-    const stationList:any = [
-        /* 운영회사, 역번호, 연계역, 지선/본선여부, 역명, 개통여부 */
-        ['SB', 'D01', [1,4,'GyeongJung'], , '용산', '미개통'],
-        ['SB', 'D02', [], , '국립박물관', '미개통'],
-        ['SB', 'D03', [], , '동빙고', '미개통'],
-        ['SB', 'D04', [3], , '신사', ''],
-        ['SB', 'D05', [7], , '논현', ''],
-        ['SB', 'D06', [8], , '신논현', ''],
-        ['SB', 'D07', [2], , '강남', ''],
-        ['SB', 'D08', [3], , '양재', ''],
-        ['SB', 'D09', [], , '양재시민의숲', ''],
-        ['SB', 'D10', [], , '청계산입구', ''],
-        ['SB', 'D11', ['G'], , '판교', ''],
-        ['SB', 'D12', ['SuinBundang'], , '정자', ''],
-        ['SB', 'D13', ['SuinBundang'], , '미금', ''],
-        ['SB', 'D14', [], , '동천', ''],
-        ['SB', 'D15', [], , '수지구청', ''],
-        ['SB', 'D16', [], , '성복', ''],
-        ['SB', 'D17', [], , '상현', ''],
-        ['SB', 'D18', [], , '광교중앙', ''],
-        ['SB', 'D19', [], , '광교', ''],
-        ['SB', 'D19', [], , '수원월드컵경기장', '미개통'],
-        ['SB', 'D20', [], , '동수원', '미개통'],
-        ['SB', 'D21', [1], , '화서', '미개통'],
-        ['SB', 'D22', [], , '호매실', '미개통']
-    ]
-}
-
-export default ShinBundang
+export const getStation =  [
+    /* 운영회사, 역번호, 연계역, 지선/본선여부, 역명, 개통여부 */
+        { 'companyCode': 'SB', 'lineId': 'shinbundang', 'manageCode': 'D01', 'stationId': 'D01', 'transferLine': '', 'lineType': '', 'stationName': '용산', 'status': 0},
+        { 'companyCode': 'SB', 'lineId': 'shinbundang', 'manageCode': 'D02', 'stationId': 'D02', 'transferLine': '', 'lineType': '', 'stationName': '국립박물관', 'status': 0},
+        { 'companyCode': 'SB', 'lineId': 'shinbundang', 'manageCode': 'D03', 'stationId': 'D03', 'transferLine': '', 'lineType': '', 'stationName': '동빙고', 'status': 0},
+        { 'companyCode': 'SB', 'lineId': 'shinbundang', 'manageCode': 'D04', 'stationId': 'D04', 'transferLine': '', 'lineType': '', 'stationName': '신사', 'status': 1},
+        { 'companyCode': 'SB', 'lineId': 'shinbundang', 'manageCode': 'D05', 'stationId': 'D05', 'transferLine': '', 'lineType': '', 'stationName': '논현', 'status': 1},
+        { 'companyCode': 'SB', 'lineId': 'shinbundang', 'manageCode': 'D06', 'stationId': 'D06', 'transferLine': '', 'lineType': '', 'stationName': '신논현', 'status': 1},
+        { 'companyCode': 'SB', 'lineId': 'shinbundang', 'manageCode': 'D07', 'stationId': 'D07', 'transferLine': '', 'lineType': '', 'stationName': '강남', 'status': 1},
+        { 'companyCode': 'SB', 'lineId': 'shinbundang', 'manageCode': 'D08', 'stationId': 'D08', 'transferLine': '', 'lineType': '', 'stationName': '양재', 'status': 1},
+        { 'companyCode': 'SB', 'lineId': 'shinbundang', 'manageCode': 'D09', 'stationId': 'D09', 'transferLine': '', 'lineType': '', 'stationName': '양재시민의숲', 'status': 1},
+        { 'companyCode': 'SB', 'lineId': 'shinbundang', 'manageCode': 'D10', 'stationId': 'D10', 'transferLine': '', 'lineType': '', 'stationName': '청계산입구', 'status': 1},
+        { 'companyCode': 'SB', 'lineId': 'shinbundang', 'manageCode': 'D11', 'stationId': 'D11', 'transferLine': '', 'lineType': '', 'stationName': '판교', 'status': 1},
+        { 'companyCode': 'SB', 'lineId': 'shinbundang', 'manageCode': 'D12', 'stationId': 'D12', 'transferLine': '', 'lineType': '', 'stationName': '정자', 'status': 1},
+        { 'companyCode': 'SB', 'lineId': 'shinbundang', 'manageCode': 'D13', 'stationId': 'D13', 'transferLine': '', 'lineType': '', 'stationName': '미금', 'status': 1},
+        { 'companyCode': 'SB', 'lineId': 'shinbundang', 'manageCode': 'D14', 'stationId': 'D14', 'transferLine': '', 'lineType': '', 'stationName': '동천', 'status': 1},
+        { 'companyCode': 'SB', 'lineId': 'shinbundang', 'manageCode': 'D15', 'stationId': 'D15', 'transferLine': '', 'lineType': '', 'stationName': '수지구청', 'status': 1},
+        { 'companyCode': 'SB', 'lineId': 'shinbundang', 'manageCode': 'D16', 'stationId': 'D16', 'transferLine': '', 'lineType': '', 'stationName': '성복', 'status': 1},
+        { 'companyCode': 'SB', 'lineId': 'shinbundang', 'manageCode': 'D17', 'stationId': 'D17', 'transferLine': '', 'lineType': '', 'stationName': '상현', 'status': 1},
+        { 'companyCode': 'SB', 'lineId': 'shinbundang', 'manageCode': 'D18', 'stationId': 'D18', 'transferLine': '', 'lineType': '', 'stationName': '광교중앙', 'status': 1},
+        { 'companyCode': 'SB', 'lineId': 'shinbundang', 'manageCode': 'D19', 'stationId': 'D19', 'transferLine': '', 'lineType': '', 'stationName': '광교', 'status': 1},
+        { 'companyCode': 'SB', 'lineId': 'shinbundang', 'manageCode': 'D19', 'stationId': 'D19', 'transferLine': '', 'lineType': '', 'stationName': '수원월드컵경기장', 'status': 0},
+        { 'companyCode': 'SB', 'lineId': 'shinbundang', 'manageCode': 'D20', 'stationId': 'D20', 'transferLine': '', 'lineType': '', 'stationName': '동수원', 'status': 0},
+        { 'companyCode': 'SB', 'lineId': 'shinbundang', 'manageCode': 'D21', 'stationId': 'D21', 'transferLine': '', 'lineType': '', 'stationName': '화서', 'status': 0},
+        { 'companyCode': 'SB', 'lineId': 'shinbundang', 'manageCode': 'D22', 'stationId': 'D22', 'transferLine': '', 'lineType': '', 'stationName': '호매실', 'status': 0}
+]
