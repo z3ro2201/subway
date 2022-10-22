@@ -52,9 +52,7 @@ const Approach = () =>
     const getData = async function() {
         if(id !== undefined) {
             const lineData = await import('../../components/line_info/line_' + id)
-
             setLineList(lineData.getStation)
-            
         }
     }
 
