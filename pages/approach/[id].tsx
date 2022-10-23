@@ -44,10 +44,12 @@ const Approach = () =>
 
     const api_line = encodeURIComponent(lineNumber)
     const apikey:string|undefined = process.env.REACT_APP_APIKEY
-    let apiuri:string|undefined
     
-    if(process.env.NODE_ENV === 'development') apiuri = process.env.REACT_APP_APIDEV
-    else apiurl = process.env.REACT_APP_APIPRO
+    
+    if(process.env.NODE_ENV === 'development') {
+        let apiuri:any = process.env.REACT_APP_APIDEV
+    }
+    else { let apiuri:any = process.env.REACT_APP_APIPRO }
 
     const apiurl:string = 'http://swopenapi.seoul.go.kr/api/subway/' + apikey + '/json/realtimePosition/0/100/' + api_line
     console.log(process.env.REACT_APP_APIDEV)
