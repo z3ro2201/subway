@@ -1,7 +1,8 @@
 :root{
   --size-width:900px;
   --icon-size: 40px;
-  --stnid-size: 60px;
+  --stnid-size: 50px;
+  --stnid-font-size: .9em;
 }
 
 html,
@@ -112,12 +113,13 @@ a.selectMetro::before{content:"";background:url(/train.png);background-size:cove
 
 /* 역 목록 */
 main{width:100%;min-height:100%;background:#fcfcfc;display:block;display:flex;flex-direction:column}
+div.header{width:100%;height:60px;font-size:14pt;font-weight:bold;display:flex;align-items:center;justify-content:center;}
 div.row{width:100%;height:auto;border-bottom:1px solid #ddd;text-align:center;display:flex;flex-direction:row;justify-content: center;}
 div.row .direction_down{width:calc(50% - 110px)}
 div.row .direction_down .down_approach, 
 div.row .direction_down .down_arrival,
 div.row .direction_down .down_leave {width:100%;height:calc(100% / 3);display:block}
-div.row .station_info{width:110px;padding:15px 0px}
+div.row .station_info{width:110px;height:120px;padding:15px 0px;display:flex;justify-content:center;align-items:center;}
 div.row .station_info span{display:block}
 div.row .direction_up{width:calc(50% - 110px)}
 div.row .direction_up .up_leave, 
@@ -125,8 +127,8 @@ div.row .direction_up .up_arrival,
 div.row .direction_up .up_approach {width:100%;height:calc(100% / 3);display:block}
 
 /* 역번호 표기 */
-.StnId{display:block;border-radius:50%;width:var(--stnid-size);height:var(--stnid-size);line-height:var(--stnid-size);text-align:center;margin:0px auto;font-size:100%;font-size:12pt}
-.StnName{display:block;margin-top:5px}
+.StnId{display:block;border-radius:50%;width:var(--stnid-size);height:var(--stnid-size);line-height:var(--stnid-size);text-align:center;margin:0px auto;font-size:100%;font-size:var(--stnid-font-size);}
+.StnName{display:block;margin-top:5px;font-size:.8em}
 ul.transferLine{margin:0;padding:0;display:block;}
 ul.transferLine li{display:block}
 ul.transferLine li.transferIcon{display:inline-block;margin:2px;width:25px;height:25px;font-size:8px;overflow-wrap:hidden;line-height:12px;border-radius:50%;border-width:2px;border-style:solid;padding:4px 4px}

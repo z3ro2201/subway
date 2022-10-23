@@ -9,13 +9,6 @@ import Link from 'next/link'
 import CustomerCenter from '../../components/customerCall'
 import StationList from '../../components/stationList'
 
-/*import Line1 from '../../components/line_info/line_1'
-import Line2 from '../../components/line_info/line_2'
-import Line3 from '../../components/line_info/line_3'
-import Line4 from '../../components/line_info/line_4'
-import Line5 from '../../components/line_info/line_5'
-import Line6 from '../../components/line_info/line_6'*/
-
 import dynamic from 'next/dynamic'
 import { render } from 'react-dom'
 
@@ -49,24 +42,59 @@ const Approach = () =>
                 lineNumber = '신분당선'; break;
         }
 
-    const getData = async function() {
+    const api_line = encodeURIComponent(lineNumber)
+    const apikey:string|undefined = process.env.REACT_APP_APIKEY
+    const apiurl:string = 'http://swopenapi.seoul.go.kr/api/subway/' + apikey + '/json/realtimePosition/0/100/' + api_line
+    console.log(process.env.REACT_APP_APIDEV)
+
+    const getLineData = async function() {
         if(id !== undefined) {
             const lineData = await import('../../components/line_info/line_' + id)
             setLineList(lineData.getStation)
         }
     }
 
+    const getData = async function() {
+        if(id !== undefined) {
+            axios.get(apiurl).then((res) => {
+                const data = res.data;
+                if(data.status === 500) { return console.log('error!') }
+                data.realtimePositionList.map((e:any, key:number) => {
+                    let getStnId;
+                    if(e['statnNm'] !== undefined && e['statnNm'] !== null)
+                    {
+                        switch(id)
+                        {
+                            case "shinbundang": 
+                                getStnId = 'D' + e['statnId'].substr(8);break
+                            case "airport":
+                                getStnId = 'A' + e['statnId'].substr(8);break
+                            default:
+                                getStnId = e['statnId'].substr(6)
+                        }
+                        console.log(getStnId)
+                    }
+                })
+            })
+        }
+    }
+
     useEffect(() => {
+        getLineData()
         getData()
+        const interval = setInterval(() => { 
+            getData()
+        }, 10000);
+        return() => clearInterval(interval)
     }, [id])
     
     return (
         <>
-            <Head>
+            <Head>{}
                 <title>SSing Metro :: {lineNumber}</title>
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
             </Head>
-            <StationList list={lineList}/>
+            <StationList line={lineNumber} list={lineList}/>
         </>
     )
 }

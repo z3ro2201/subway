@@ -4,12 +4,16 @@ import React from 'react'
 import {transferInfo} from './transferInfo'
 
 type AppLayoutProps = {
+    line:any
     list:any
 }
 
-export default function StationList({ list }: AppLayoutProps) {
+export default function StationList({ line, list }: AppLayoutProps) {
     return(
         <>
+        <div className='header'>
+            {line}
+        </div>
         {
             list!==undefined && list.map((item: any, key: number) => {
                 if(item.status === 0) return

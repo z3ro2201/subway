@@ -27,7 +27,7 @@ export const getStation =  [
   {'companyCode': 'K', 'lineId': '1', 'manageCode': '121', 'stationId': '121', 'transferLine': '', 'lineType': '', 'stationName': '신이문','status':  ''},
   {'companyCode': 'K', 'lineId': '1', 'manageCode': '122', 'stationId': '122', 'transferLine': '', 'lineType': '', 'stationName': '외대앞','status':  ''},
   {'companyCode': 'K', 'lineId': '1', 'manageCode': '123', 'stationId': '123', 'transferLine': 'gyeongjung,gyeongchun', 'lineType': '', 'stationName': '회기', 'status': 1},
-  {'companyCode': 'S', 'lineId': '1', 'manageCode': '124', 'stationId': '124', 'transferLine': 'gyeongjung,gyeongchun.suinbundang', 'lineType': '', 'stationName': '지하청량리', 'status': 1},
+  {'companyCode': 'S', 'lineId': '1', 'manageCode': '124', 'stationId': '124', 'transferLine': 'gyeongjung,gyeongchun,suinbundang', 'lineType': '', 'stationName': '지하청량리', 'status': 1},
   {'companyCode': 'S', 'lineId': '1', 'manageCode': '125', 'stationId': '125', 'transferLine': '', 'lineType': '', 'stationName': '제기동', 'status': 1},
   {'companyCode': 'S', 'lineId': '1', 'manageCode': '126', 'stationId': '126', 'transferLine': 'SS,ui', 'lineType': '', 'stationName': '신설동', 'status': 1},
   {'companyCode': 'S', 'lineId': '1', 'manageCode': '127', 'stationId': '127', 'transferLine': '6', 'lineType': '', 'stationName': '동묘앞', 'status': 1},
