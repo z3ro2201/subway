@@ -19,6 +19,7 @@ const Approach = () =>
     let lineNumber:any = '', lineId:any
     let lineData:any
     const [lineList, setLineList] = useState([])
+    const [realtimeData, setRealtimeData] = useState([{ 'errorMessage': [ {'code': 500 }] }])
 
     if(id !== undefined && id >= '1' && id <= '9')
     {
@@ -45,18 +46,12 @@ const Approach = () =>
     const api_line = encodeURIComponent(lineNumber)
     const apikey:string|undefined = process.env.REACT_APP_APIKEY
     
-    
-    if(process.env.NODE_ENV === 'development') {
-        let apiuri:any = process.env.REACT_APP_APIDEV
-    }
-    else { let apiuri:any = process.env.REACT_APP_APIPRO }
-
-    const apiurl:string = 'http://swopenapi.seoul.go.kr/api/subway/' + apikey + '/json/realtimePosition/0/100/' + api_line
-    console.log(process.env.REACT_APP_APIDEV)
+    let apiurl = process.env.REACT_APP_API + api_line
 
     const getLineData = async function() {
         if(id !== undefined) {
             const lineData = await import('../../components/line_info/line_' + id)
+            axios.get(apiurl).then((res) => setRealtimeData(res.data))
             setLineList(lineData.getStation)
         }
     }
@@ -66,6 +61,7 @@ const Approach = () =>
             axios.get(apiurl).then((res) => {
                 const data = res.data;
                 if(data.status === 500) { return console.log('error!') }
+                setRealtimeData(data)
                 data.realtimePositionList.map((e:any, key:number) => {
                     let getStnId;
                     if(e['statnNm'] !== undefined && e['statnNm'] !== null)
@@ -77,9 +73,20 @@ const Approach = () =>
                             case "airport":
                                 getStnId = 'A' + e['statnId'].substr(8);break
                             default:
-                                getStnId = e['statnId'].substr(6)
+                                getStnId = e['statnId'].substr(7) //5~
                         }
-                        console.log(getStnId)
+                        
+                        if(e['updnLine'] == 0) {
+                            //document.querySelector('.up_arrival.stn_' +getStnId + ', .up_leave.stn_'+getStnId+', .up_approach.stn_' + getStnId).innerHTML = ''
+                            if(e['trainSttus'] == 0) document.querySelector('.up_approach.stn_'+getStnId).innerHTML =  `${e['statnTnm']}(${e['trainNo']})열차 ${e['statnNm']} 접근`
+                            else if(e['trainSttus'] == 1) document.querySelector('.up_arrival.stn_'+getStnId).innerHTML =  `${e['statnTnm']}(${e['trainNo']})열차 ${e['statnNm']} 도착`
+                            else document.querySelector('.up_leave.stn_'+getStnId).innerHTML = `${e['statnNm']}(${e['trainNo']})열차 ${e['statnNm']} 출발`
+                        }else{
+                            //document.querySelector('.down_arrival.stn_' +getStnId + ', .down_leave.stn_'+getStnId+', .down_approach.stn_' + getStnId).innerHTML = ''
+                            if(e['trainSttus'] == 0) document.querySelector('.down_approach.stn_'+getStnId).innerHTML =  `${e['statnTnm']}(${e['trainNo']})열차 ${e['statnNm']} 접근`
+                            else if(e['trainSttus'] == 1) document.querySelector('.down_arrival.stn_'+getStnId).innerHTML =  `${e['statnTnm']}(${e['trainNo']})열차 ${e['statnNm']} 도착`
+                            else document.querySelector('.down_leave.stn_'+getStnId).innerHTML = `${e['statnTnm']}(${e['trainNo']})열차 ${e['statnNm']} 출발`
+                        }
                     }
                 })
             })
@@ -90,6 +97,7 @@ const Approach = () =>
         getLineData()
         getData()
         const interval = setInterval(() => { 
+            getLineData()
             getData()
         }, 10000);
         return() => clearInterval(interval)
@@ -101,7 +109,7 @@ const Approach = () =>
                 <title>SSing Metro :: {lineNumber}</title>
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
             </Head>
-            <StationList line={lineNumber} list={lineList}/>
+            <StationList line={lineNumber} list={lineList} realtimeData={realtimeData}/>
         </>
     )
 }

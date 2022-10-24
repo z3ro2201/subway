@@ -6,9 +6,10 @@ import {transferInfo} from './transferInfo'
 type AppLayoutProps = {
     line:any
     list:any
+    realtimeData:any
 }
 
-export default function StationList({ line, list }: AppLayoutProps) {
+export default function StationList({ line, list , realtimeData }: AppLayoutProps) {
     return(
         <>
         <div className='header'>
@@ -20,9 +21,9 @@ export default function StationList({ line, list }: AppLayoutProps) {
                 return(
                     <div className='row' key={key}>
                         <div className='direction_down'>
-                            <div className={ 'down_approach stn_' + item.manageCode}>{item.down_approach_data}</div>
-                            <div className={ 'down_arrival stn_' + item.manageCode}>{item.down_arrive_data}</div>
-                            <div className={ 'down_leave stn_' + item.manageCode}>{item.down_leave_data}</div>
+                            <div id='textdata' className={ 'down_approach stn_' + item.manageCode}></div>
+                            <div id='textdata' className={ 'down_arrival stn_' + item.manageCode}></div>
+                            <div id='textdata' className={ 'down_leave stn_' + item.manageCode}></div>
                         </div>
                         <div className='station_info'>
                             <div>
@@ -55,9 +56,9 @@ export default function StationList({ line, list }: AppLayoutProps) {
                             </div>
                         </div>
                         <div className='direction_up'>
-                            <div className={'up_leave stn_' + item.manageCode}>{item.up_approach_data}</div>
-                            <div className={'up_arrival stn_' + item.manageCode}>{item.up_arrive_data}</div>
-                            <div className={'up_approach stn_' + item.manageCode}>{item.up_leave_data}</div>
+                            <div id='textdata' className={'up_leave stn_' + item.manageCode}></div>
+                            <div id='textdata' className={'up_arrival stn_' + item.manageCode}></div>
+                            <div id='textdata' className={'up_approach stn_' + item.manageCode}></div>
                         </div>
                     </div>
                 )
