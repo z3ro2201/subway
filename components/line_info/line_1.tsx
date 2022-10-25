@@ -73,7 +73,7 @@ export const getStation =  [
   {'companyCode': 'K', 'lineId': '1', 'manageCode': 'P146', 'stationId': 'P146', 'transferLine': '', 'lineType': '경부선', 'stationName': '관악', 'status': 1},
   {'companyCode': 'K', 'lineId': '1', 'manageCode': 'P147', 'stationId': 'P147', 'transferLine': '', 'lineType': '경부선', 'stationName': '안양', 'status': 1},
   {'companyCode': 'K', 'lineId': '1', 'manageCode': 'P148', 'stationId': 'P148', 'transferLine': '', 'lineType': '경부선', 'stationName': '명학', 'status': 1},
-  {'companyCode': 'K', 'lineId': '1', 'manageCode': 'P159', 'stationId': 'P159', 'transferLine': '4', 'lineType': '경부선', 'stationName': '금정', 'status': 1},
+  {'companyCode': 'K', 'lineId': '1', 'manageCode': 'P149', 'stationId': 'P149', 'transferLine': '4', 'lineType': '경부선', 'stationName': '금정', 'status': 1},
   {'companyCode': 'K', 'lineId': '1', 'manageCode': 'P150', 'stationId': 'P150', 'transferLine': '', 'lineType': '경부선', 'stationName': '군포', 'status': 1},
   {'companyCode': 'K', 'lineId': '1', 'manageCode': 'P151', 'stationId': 'P151', 'transferLine': '', 'lineType': '경부선', 'stationName': '당정', 'status': 1},
   {'companyCode': 'K', 'lineId': '1', 'manageCode': 'P152', 'stationId': 'P152', 'transferLine': '', 'lineType': '경부선', 'stationName': '의왕', 'status': 1},

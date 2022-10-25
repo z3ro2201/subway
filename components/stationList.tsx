@@ -20,10 +20,7 @@ export default function StationList({ line, list , realtimeData }: AppLayoutProp
                 if(item.status === 0) return
                 return(
                     <div className='row' key={key}>
-                        <div className='direction_down'>
-                            <div id='textdata' className={ 'down_approach stn_' + item.manageCode}></div>
-                            <div id='textdata' className={ 'down_arrival stn_' + item.manageCode}></div>
-                            <div id='textdata' className={ 'down_leave stn_' + item.manageCode}></div>
+                        <div id={'down_' + item.manageCode} className='direction_down'>
                         </div>
                         <div className='station_info'>
                             <div>
@@ -55,10 +52,7 @@ export default function StationList({ line, list , realtimeData }: AppLayoutProp
                                 </ul>
                             </div>
                         </div>
-                        <div className='direction_up'>
-                            <div id='textdata' className={'up_leave stn_' + item.manageCode}></div>
-                            <div id='textdata' className={'up_arrival stn_' + item.manageCode}></div>
-                            <div id='textdata' className={'up_approach stn_' + item.manageCode}></div>
+                        <div id={ 'up_' + item.manageCode} className='direction_up'>
                         </div>
                     </div>
                 )

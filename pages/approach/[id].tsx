@@ -62,8 +62,22 @@ const Approach = () =>
                 const data = res.data;
                 if(data.status === 500) { return console.log('error!') }
                 setRealtimeData(data)
+                
+                const filter = Array.prototype.filter
+                const downElement = document.querySelectorAll('.direction_down')
+                let downElementReturn = filter.call(downElement, function(ele) {
+                    return ele.innerText = ''
+                })
+                
+                const upElement = document.querySelectorAll('.direction_up')
+                let upElementReturn = filter.call(upElement, function(ele) {
+                    return ele.innerText = ''
+                })
+                
                 data.realtimePositionList.map((e:any, key:number) => {
                     let getStnId;
+                    const manageCode = e['manageCode']
+                    
                     if(e['statnNm'] !== undefined && e['statnNm'] !== null)
                     {
                         switch(id)
@@ -73,19 +87,44 @@ const Approach = () =>
                             case "airport":
                                 getStnId = 'A' + e['statnId'].substr(8);break
                             default:
-                                getStnId = e['statnId'].substr(7) //5~
+                                getStnId = e['statnId'].substr(5) //5~
                         }
+                        let trainMsg = `${e['statnTnm']}(${e['trainNo']})열차 ${e['statnNm']}`;
+
+                        if(getStnId.substr(0,2) == '00') getStnId = getStnId.substr(2)
+                        else getStnId = 'P' + getStnId.substr(2)
                         
+
+
                         if(e['updnLine'] == 0) {
-                            //document.querySelector('.up_arrival.stn_' +getStnId + ', .up_leave.stn_'+getStnId+', .up_approach.stn_' + getStnId).innerHTML = ''
-                            if(e['trainSttus'] == 0) document.querySelector('.up_approach.stn_'+getStnId).innerHTML =  `${e['statnTnm']}(${e['trainNo']})열차 ${e['statnNm']} 접근`
-                            else if(e['trainSttus'] == 1) document.querySelector('.up_arrival.stn_'+getStnId).innerHTML =  `${e['statnTnm']}(${e['trainNo']})열차 ${e['statnNm']} 도착`
-                            else document.querySelector('.up_leave.stn_'+getStnId).innerHTML = `${e['statnNm']}(${e['trainNo']})열차 ${e['statnNm']} 출발`
+                            const infoMessage = document.getElementById('up_' +getStnId)
+
+                            if(infoMessage !== null && infoMessage !== undefined) {
+                                let up_arrival_code
+                                switch(e['trainSttus'])
+                                {
+                                    case '1': up_arrival_code = '도착';break;
+                                    case '0': up_arrival_code = '접근';break;
+                                    default: up_arrival_code = '출발'
+                                }
+                                infoMessage.textContent =  `${e['trainNo']}열차 ${e['statnNm']} ${up_arrival_code}`
+                            }
+                            console.log(`${e['trainNo']}열차 ${e['trainSttus']}`)
                         }else{
-                            //document.querySelector('.down_arrival.stn_' +getStnId + ', .down_leave.stn_'+getStnId+', .down_approach.stn_' + getStnId).innerHTML = ''
-                            if(e['trainSttus'] == 0) document.querySelector('.down_approach.stn_'+getStnId).innerHTML =  `${e['statnTnm']}(${e['trainNo']})열차 ${e['statnNm']} 접근`
-                            else if(e['trainSttus'] == 1) document.querySelector('.down_arrival.stn_'+getStnId).innerHTML =  `${e['statnTnm']}(${e['trainNo']})열차 ${e['statnNm']} 도착`
-                            else document.querySelector('.down_leave.stn_'+getStnId).innerHTML = `${e['statnTnm']}(${e['trainNo']})열차 ${e['statnNm']} 출발`
+                            const infoMessage = document.getElementById('down_' +getStnId)
+
+                            
+                            if(infoMessage !== null && infoMessage !== undefined) {
+                                let down_arrival_code
+                                switch(e['trainSttus'])
+                                {
+                                    case '1': down_arrival_code = '도착';break;
+                                    case '0': down_arrival_code = '접근';break;
+                                    default: down_arrival_code = '출발'
+                                }
+                                infoMessage.textContent =  `${e['trainNo']}열차 ${e['statnNm']} ${down_arrival_code}`
+                            }
+                            console.log(`${e['trainNo']}열차 ${e['trainSttus']}`)
                         }
                     }
                 })
@@ -97,7 +136,6 @@ const Approach = () =>
         getLineData()
         getData()
         const interval = setInterval(() => { 
-            getLineData()
             getData()
         }, 10000);
         return() => clearInterval(interval)
