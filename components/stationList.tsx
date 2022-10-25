@@ -8,9 +8,6 @@ type AppLayoutProps = {
     line:any
     list:any
     realtimeData:any
-    lineCode:string
-    lineName_ko:string
-    lineName_en:string
 }
 
 export default function StationList({ line, list , realtimeData }: AppLayoutProps) {
