@@ -115,16 +115,14 @@ a.selectMetro::before{content:"";background:url(/train.png);background-size:cove
 main{width:100%;min-height:100%;background:#fcfcfc;display:block;display:flex;flex-direction:column}
 div.header{width:100%;height:60px;font-size:14pt;font-weight:bold;display:flex;align-items:center;justify-content:center;}
 div.row{width:100%;height:auto;border-bottom:1px solid #ddd;text-align:center;display:flex;flex-direction:row;justify-content: center;}
-div.row .direction_down{width:calc(50% - 110px)}
-div.row .direction_down .down_approach, 
-div.row .direction_down .down_arrival,
-div.row .direction_down .down_leave {width:100%;height:calc(100% / 3);display:block}
 div.row .station_info{width:110px;height:120px;padding:15px 0px;display:flex;justify-content:center;align-items:center;}
 div.row .station_info span{display:block}
-div.row .direction_up{width:calc(50% - 110px)}
-div.row .direction_up .up_leave, 
-div.row .direction_up .up_arrival,
-div.row .direction_up .up_approach {width:100%;height:calc(100% / 3);display:block}
+div.row .direction_up,div.row .direction_down{width:calc(50% - 110px);display:flex;justify-content:center;}
+div.row .direction_up.leave{align-items:flex-start}
+div.row .direction_down.leave{align-items:flex-end}
+div.row .direction_up.arrival,div.row .direction_down.arrival{align-items:center}
+div.row .direction_up.approach{align-items:flex-end}
+div.row .direction_down.approach{align-items:flex-start}
 
 /* 역번호 표기 */
 .StnId{display:block;border-radius:50%;width:var(--stnid-size);height:var(--stnid-size);line-height:var(--stnid-size);text-align:center;margin:0px auto;font-size:100%;font-size:var(--stnid-font-size);}

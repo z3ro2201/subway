@@ -66,12 +66,14 @@ const Approach = () =>
                 const filter = Array.prototype.filter
                 const downElement = document.querySelectorAll('.direction_down')
                 let downElementReturn = filter.call(downElement, function(ele) {
-                    return ele.innerText = ''
+                    ele.innerText = ''
+                    return 
                 })
                 
                 const upElement = document.querySelectorAll('.direction_up')
                 let upElementReturn = filter.call(upElement, function(ele) {
-                    return ele.innerText = ''
+                    ele.innerText = ''
+                    return
                 })
                 
                 data.realtimePositionList.map((e:any, key:number) => {
@@ -101,30 +103,35 @@ const Approach = () =>
 
                             if(infoMessage !== null && infoMessage !== undefined) {
                                 let up_arrival_code
+                                if(infoMessage.classList[1] !== undefined) {
+                                    infoMessage.classList.remove(infoMessage.classList[1])
+                                }
                                 switch(e['trainSttus'])
                                 {
-                                    case '1': up_arrival_code = '도착';break;
-                                    case '0': up_arrival_code = '접근';break;
-                                    default: up_arrival_code = '출발'
+                                    case '1': up_arrival_code = '도착';infoMessage.classList.add('arrival');break;
+                                    case '0': up_arrival_code = '접근';infoMessage.classList.add('approach');break;
+                                    default: up_arrival_code = '출발';infoMessage.classList.add('leave');
                                 }
                                 infoMessage.textContent =  `${e['trainNo']}열차 ${e['statnNm']} ${up_arrival_code}`
                             }
-                            console.log(`${e['trainNo']}열차 ${e['trainSttus']}`)
                         }else{
                             const infoMessage = document.getElementById('down_' +getStnId)
 
                             
                             if(infoMessage !== null && infoMessage !== undefined) {
-                                let down_arrival_code
+                                let arrival_code
+                                if(infoMessage.classList[1] !== undefined) {
+                                    infoMessage.classList.remove(infoMessage.classList[1])
+                                }
                                 switch(e['trainSttus'])
                                 {
-                                    case '1': down_arrival_code = '도착';break;
-                                    case '0': down_arrival_code = '접근';break;
-                                    default: down_arrival_code = '출발'
+                                    case '1': arrival_code = '도착';infoMessage.classList.add('arrival');break;
+                                    case '0': arrival_code = '접근';infoMessage.classList.add('approach');break;
+                                    default: arrival_code = '출발';infoMessage.classList.add('leave');
                                 }
-                                infoMessage.textContent =  `${e['trainNo']}열차 ${e['statnNm']} ${down_arrival_code}`
+                                infoMessage.textContent =  `${e['trainNo']}열차 ${e['statnNm']} ${arrival_code}`
                             }
-                            console.log(`${e['trainNo']}열차 ${e['trainSttus']}`)
+                            
                         }
                     }
                 })
