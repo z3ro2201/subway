@@ -82,57 +82,50 @@ const Approach = () =>
                     
                     if(e['statnNm'] !== undefined && e['statnNm'] !== null)
                     {
+
+                        // 역코드정보, 지선의 경우 지선분리
                         switch(id)
                         {
                             case "shinbundang": 
                                 getStnId = 'D' + e['statnId'].substr(8);break
                             case "airport":
                                 getStnId = 'A' + e['statnId'].substr(8);break
+                            case "gyeongjung":
+                                    getStnId = 'K' + e['statnId'].substr(7);break
+                            case "gyeongchun":
+                                e['statnId']!==null&&e['statnId']!==undefined?getStnId='K' + e['statnId'].substr(7):
+                                getStnId=='K116'?getStnId='K117':'';break
+                            case "ui":
+                                getStnId=e['statnId'].substr(7);break
+                            case "2":
+                                getStnId = e['statnId'].substr(5) //5~
+                                getStnId.substr(0,2)=='00'?getStnId = getStnId.substr(1):getStnId = getStnId.substr(1,4)
+                                break;
                             default:
                                 getStnId = e['statnId'].substr(5) //5~
+                                getStnId.substr(0,2)=='00'?getStnId = getStnId.substr(2):getStnId = 'P' + getStnId.substr(2)
                         }
                         let trainMsg = `${e['statnTnm']}(${e['trainNo']})열차 ${e['statnNm']}`;
-
-                        if(getStnId.substr(0,2) == '00') getStnId = getStnId.substr(2)
-                        else getStnId = 'P' + getStnId.substr(2)
                         
-
-
-                        if(e['updnLine'] == 0) {
-                            const infoMessage = document.getElementById('up_' +getStnId)
-
-                            if(infoMessage !== null && infoMessage !== undefined) {
-                                let up_arrival_code
-                                if(infoMessage.classList[1] !== undefined) {
-                                    infoMessage.classList.remove(infoMessage.classList[1])
-                                }
-                                switch(e['trainSttus'])
-                                {
-                                    case '1': up_arrival_code = '도착';infoMessage.classList.add('arrival');break;
-                                    case '0': up_arrival_code = '접근';infoMessage.classList.add('approach');break;
-                                    default: up_arrival_code = '출발';infoMessage.classList.add('leave');
-                                }
-                                infoMessage.textContent =  `${e['trainNo']}열차 ${e['statnNm']} ${up_arrival_code}`
-                            }
-                        }else{
-                            const infoMessage = document.getElementById('down_' +getStnId)
-
-                            
-                            if(infoMessage !== null && infoMessage !== undefined) {
-                                let arrival_code
-                                if(infoMessage.classList[1] !== undefined) {
-                                    infoMessage.classList.remove(infoMessage.classList[1])
-                                }
-                                switch(e['trainSttus'])
-                                {
-                                    case '1': arrival_code = '도착';infoMessage.classList.add('arrival');break;
-                                    case '0': arrival_code = '접근';infoMessage.classList.add('approach');break;
-                                    default: arrival_code = '출발';infoMessage.classList.add('leave');
-                                }
-                                infoMessage.textContent =  `${e['trainNo']}열차 ${e['statnNm']} ${arrival_code}`
-                            }
-                            
+                        
+                        // 열차 상하행정보
+                        let direction;
+                        e['updnLine']==0?direction='up_':direction='down_'
+                        
+                        // 열차정보 표출
+                        const infoMessage = document.getElementById(direction + getStnId)
+                        if(infoMessage==null&&infoMessage==undefined) return;
+                        if(infoMessage.classList[2]!==undefined) infoMessage.classList.remove(infoMessage.classList[1])
+                        let arrival_code;
+                        switch(e['trainSttus'])
+                        {
+                            case '0':arrival_code = '접근'; infoMessage.classList.add('approach');break
+                            case '1':arrival_code = '도착'; infoMessage.classList.add('arrival');break
+                            default:arrival_code = '출발'; infoMessage.classList.add('leave');
                         }
+
+                        infoMessage.textContent =  `${e['trainNo']}열차 ${e['statnNm']} ${arrival_code}`
+
                     }
                 })
             })

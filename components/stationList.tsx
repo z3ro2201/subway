@@ -2,30 +2,36 @@ import type { NextPage } from 'next'
 import React from 'react'
 
 import {transferInfo} from './transferInfo'
+import {lineList} from './lineList'
 
 type AppLayoutProps = {
     line:any
     list:any
     realtimeData:any
+    lineCode:string
+    lineName_ko:string
+    lineName_en:string
 }
 
 export default function StationList({ line, list , realtimeData }: AppLayoutProps) {
     return(
         <>
-        <div className='header'>
-            {line}
+        <div className='__appHeader'>
+            <div className='menuLink'>☰</div>
+            <div className='lineName'>{line}</div>
+            <div className='homeLink'>&nbsp;</div>
         </div>
-        <div className='row'>
-            <div className='direction_down1'>하행</div>
-            <div className='station_info1'>역정보</div>
-            <div className='direction_up1'>상행</div>
+        <div className='__appMenu'>
         </div>
+        <div className='__appBody'>
         {
             list!==undefined && list.map((item: any, key: number) => {
                 if(item.status === 0) return
                 return(
                     <div className='row' key={key}>
-                        <div id={'down_' + item.manageCode} className='direction_down'>
+                        <div className='direction'>
+                            <div className={'rows line_' + item.lineId}></div>
+                            <div id={ 'down_' + item.manageCode} className='direction_down'></div>
                         </div>
                         <div className='station_info'>
                             <div>
@@ -57,12 +63,15 @@ export default function StationList({ line, list , realtimeData }: AppLayoutProp
                                 </ul>
                             </div>
                         </div>
-                        <div id={ 'up_' + item.manageCode} className='direction_up'>
+                        <div className='direction'>
+                            <div className={'rows line_' + item.lineId}></div>
+                            <div id={ 'up_' + item.manageCode} className='direction_up'></div>
                         </div>
                     </div>
                 )
             })
         }
+        </div>
         </>
     )
 }
