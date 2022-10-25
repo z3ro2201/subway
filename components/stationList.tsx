@@ -15,6 +15,11 @@ export default function StationList({ line, list , realtimeData }: AppLayoutProp
         <div className='header'>
             {line}
         </div>
+        <div className='row'>
+            <div className='direction_down1'>하행</div>
+            <div className='station_info1'>역정보</div>
+            <div className='direction_up1'>상행</div>
+        </div>
         {
             list!==undefined && list.map((item: any, key: number) => {
                 if(item.status === 0) return

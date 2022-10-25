@@ -101,8 +101,8 @@ export const getStation =  [
   {'companyCode': 'K', 'lineId': '1', 'manageCode': 'P173', 'stationId': 'P173', 'transferLine': '', 'lineType': '경부선', 'stationName': '탕정', 'status': 1},
   {'companyCode': 'K', 'lineId': '1', 'manageCode': 'P174', 'stationId': 'P174', 'transferLine': '', 'lineType': '경부선', 'stationName': '배방', 'status': 1},
   {'companyCode': 'K', 'lineId': '1', 'manageCode': 'P175', 'stationId': 'P175', 'transferLine': '', 'lineType': '경부선', 'stationName': '풍기', 'status': 0},
-  {'companyCode': 'K', 'lineId': '1', 'manageCode': 'P176', 'stationId': 'P176', 'transferLine': '', 'lineType': '경부선', 'stationName': '온양온천', 'status': 1},
-  {'companyCode': 'K', 'lineId': '1', 'manageCode': 'P177', 'stationId': 'P177', 'transferLine': '', 'lineType': '경부선', 'stationName': '신창', 'status': 1},
+  {'companyCode': 'K', 'lineId': '1', 'manageCode': 'P175'/*P-176 풍기 개통시*/, 'stationId': 'P175', 'transferLine': '', 'lineType': '경부선', 'stationName': '온양온천', 'status': 1},
+  {'companyCode': 'K', 'lineId': '1', 'manageCode': 'P176'/*P-177 풍기 개통시*/, 'stationId': 'P176', 'transferLine': '', 'lineType': '경부선', 'stationName': '신창', 'status': 1},
   {'companyCode': 'K', 'lineId': '1', 'manageCode': 'P144-1', 'stationId': 'P144-1', 'transferLine': '', 'LineType': '경부고속선', 'stationName': '광명', 'status': 1},
   {'companyCode': 'K', 'lineId': '1', 'manageCode': 'P157-1', 'stationId': 'P157-1', 'transferLine': '', 'LineType': '병점기지선', 'stationName': '서동탄', 'status': 1}
 ]
